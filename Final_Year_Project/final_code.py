@@ -25,9 +25,9 @@ def predict():
     prediction = model.predict(test_image)[0][0]
     threshold = 0.5 # Set threshold for predicting pneumonia
     if prediction > threshold:
-        print('Pneumonia detected.')
+        outl= 'Traces of PNEUMONIA is present.'
     else:
-        print('Pneumonia not detected.')
+        outl= 'Traces of PNEUMONIA is not present.'
     
     out = prediction.tolist()
     
@@ -50,7 +50,16 @@ def predict():
     total_pixels = np.prod(markers.shape)
     lung_percentage = lung_pixels / total_pixels * 100
     output=str(lung_percentage)
-    print('Percentage of lungs affected: {:.2f}%'.format(lung_percentage))
-    return [str(out),output]
+    def lungper(x):
+        a=round(x,2)
+        return "%f of lungs is affected"%a
+    def outpu(x):
+        return str(x)
+    print(outpu(outl))
+    print(lungper(lung_percentage))
+    return [outpu(outl),lungper(lung_percentage)]
+
+    #print('Percentage of lungs affected: {:.2f}%'.format(lung_percentage))
+    #return [str(out),output]
 if __name__ == '__main__':
     app.run(debug=True)
