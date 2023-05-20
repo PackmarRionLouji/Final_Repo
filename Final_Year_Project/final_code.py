@@ -52,7 +52,7 @@ def predict():
     output=str(lung_percentage)
     def lungper(x):
         a=round(x,2)
-        return "%f % of lungs is affected"%a
+        return f"{a:.2f}% of lungs is affected"
     def outpu(x):
         return str(x)
     print(outpu(outl))
